@@ -1,0 +1,33 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+-- Criando a tela GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "WebcamMessage"
+screenGui.ResetOnSpawn = false
+
+-- Configurando o fundo preto
+local background = Instance.new("Frame")
+background.Size = UDim2.new(1, 0, 1, 0)
+background.BackgroundColor3 = Color3.new(0, 0, 0)
+background.Parent = screenGui
+
+-- Configurando o texto
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.Text = "Estou na sua webcam"
+textLabel.TextColor3 = Color3.new(1, 0, 0)
+textLabel.TextScaled = true
+textLabel.Font = Enum.Font.SourceSansBold
+textLabel.Parent = background
+
+-- Adicionando a GUI ao jogador
+if player:FindFirstChild("PlayerGui") then
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+end
+
+-- Remova o comentário abaixo caso queira que desapareça após um tempo
+-- delay(5, function()
+--     screenGui:Destroy()
+-- end)
